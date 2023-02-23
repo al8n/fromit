@@ -1,0 +1,23 @@
+[package]
+name = "fromit"
+version = "0.0.1"
+edition = "2021"
+license = "Apache-2.0/MIT"
+description = "A super powerful macro for generating new structs based on the given struct"
+categories = ["development-tools", "rust-patterns"]
+keywords = ["derive", "macro", "builder", "setter", "from"]
+repository = "https://github.com/al8n/fromit"
+homepage = "https://github.com/al8n/fromit"
+documentation = "https://docs.rs/fromit/latest/fromit"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+darling = "0.14"
+syn = { version = "1", features = ["full"] }
+quote = "1"
+proc-macro2 = "1"
+
+[dev-dependencies]
+serde = { version = "1", features = ["derive"] }
