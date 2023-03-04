@@ -173,16 +173,16 @@ impl FooDb {
         self
     }
 }
-struct FooGraphql<H, O, T, C>
+struct FooGraphql<H: core::hash::Hash, O, T: Clone + core::fmt::Debug + Default, C: Copy + Default>
 where
     O: Eq,
 {
     panda: T,
     tiger: C,
     h: H,
-    baz: u64,
     o: O,
     bar: i32,
+    baz: u64,
 }
 
 impl<H: core::hash::Hash, O, T: Clone + core::fmt::Debug + Default, C: Copy + Default>

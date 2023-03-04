@@ -1,3 +1,4 @@
+#![doc = include_str!("../README.md")]
 #![allow(clippy::wrong_self_convention)]
 
 use std::collections::{hash_map::Entry, HashMap};
@@ -66,6 +67,7 @@ struct FinalGenerics {
   final_generics: syn::Generics,
   final_impl_generics: proc_macro2::TokenStream,
   final_ty_generics: proc_macro2::TokenStream,
+  final_struct_generics: proc_macro2::TokenStream,
   final_where_clause: Option<proc_macro2::TokenStream>,
 }
 
@@ -104,6 +106,7 @@ fn get_final_generics(
             final_impl_generics: impl_generics.to_token_stream(),
             final_ty_generics: ty_generics.to_token_stream(),
             final_where_clause: where_clause.map(|w| quote!(#w)),
+            final_struct_generics: impl_generics.to_token_stream(),
             final_generics: self_bound,
           })
         } else {
@@ -147,6 +150,7 @@ fn get_final_generics(
             final_impl_generics: impl_generics.to_token_stream(),
             final_ty_generics: ty_generics.to_token_stream(),
             final_where_clause: Some(w),
+            final_struct_generics: impl_generics.to_token_stream(),
             final_generics: g,
           })
         }
@@ -216,6 +220,7 @@ fn get_final_generics(
           final_impl_generics: i,
           final_ty_generics: self_ty_generics.to_token_stream(),
           final_where_clause: Some(w),
+          final_struct_generics: self_impl_generics.to_token_stream(),
           final_generics: self_bound,
         })
       }
@@ -235,6 +240,7 @@ fn get_final_generics(
         final_ty_generics: Default::default(),
         final_where_clause: where_clause.map(|w| quote!(#w)),
         final_generics: Default::default(),
+        final_struct_generics: Default::default(),
       })
     }
   }

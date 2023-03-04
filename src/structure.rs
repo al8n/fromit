@@ -351,12 +351,12 @@ pub(crate) fn generate_struct(
 
   let struct_attrs = &opts.attributes.attrs;
   let vis = &opts.vis;
-  let final_ty_generics = &final_generics.final_ty_generics;
+  let final_struct_generics = &final_generics.final_struct_generics;
   let self_where_clause = &final_generics.where_clause;
 
   Ok(quote! {
      #(#struct_attrs)*
-      #vis struct #name #final_ty_generics #self_where_clause {
+      #vis struct #name #final_struct_generics #self_where_clause {
           #(#extra_fields)*
           #(#fields)*
       }

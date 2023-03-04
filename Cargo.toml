@@ -1,6 +1,6 @@
 [package]
 name = "fromit"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 license = "Apache-2.0/MIT"
 description = "A super powerful macro for generating new structs with getters, setters, and `From` or `TryFrom` implementation based on the given struct."
